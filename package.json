@@ -1,0 +1,16 @@
+{
+  "name": "daemon-mqtt-es",
+  "version": "1.0.0",
+  "description": "Demonio que escucha del mqtt y guarda en la base de datos elasticsearch",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francisco Nataniel Gubbins Corral",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic/elasticsearch": "^7.16.0",
+    "mqtt": "^4.3.4"
+  }
+}

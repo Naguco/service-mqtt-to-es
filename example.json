@@ -1,0 +1,142 @@
+{
+  "_id": { "$oid": "6197627d61ae0575ca771f3b" },
+  "model": "RC151_R06",
+  "registersDescription": [
+    {
+      "description": "151 [sólo lectura].",
+      "moreInfo": "El regulador sonda siempre responde 151 como punto de centinela en binario de 16 bits."
+    },
+    {
+      "description": "Dirección de comunicaciones [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la dirección (1 a 240) en binario de 16 bits. Valor por defecto: 1 [1]. Si el regulador está conectado a una red de comunicaciones serie, no es posible configurar ningún equipo de la red en la dirección 245, ya que el regulador también responde a esa dirección.DIRECCIÓN DE BROADCAST: Dirección 250 (el regulador recibe la comunicación, pero no responde). Todos los registros de escritura son broadcast."
+    },
+    {
+      "description": "Estado de funcionamiento on/off [lectura/escritura].",
+      "moreInfo": "0: Off. 1: On. Valor por defecto: 0 [0ff]. Off: Relé on/off desactivado (contacto abierto). On: Relé on/off activado (contacto cerrado). =240 (0xF0): Valores por defecto. =247 (0xF7): Calibración sensor CO2. IMPORTANTE: Consultar proceso de calibración. =255 (0xFF): Reset."
+    },
+    {
+      "description": "Consigna CO2 (salidas “Regulación CO2”)[lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la consigna (400ppm a 1400ppm) en binario de 16 bits. Valor por defecto: 800 [800ppm]. [Registro 4 ≤ Registro 3 ≤ Registro 5] Esta consigna corresponde también con la consigna de alarma en caso de estar habilitada."
+    },
+    {
+      "description": "Mínima consigna CO2 (salidas “Regulación CO2”) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la mínima consigna (400ppm a 1400ppm) en binario de 16 bits. Valor por defecto: 400 [400ppm]. [Registro 4 ≤ Registro 5]"
+    },
+    {
+      "description": "Máxima consigna CO2 (salidas “Regulación CO2”)[lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la máxima consigna (400ppm a 1400ppm) en binario de 16 bits. Valor por defecto: 1400 [1400ppm]. [Registro 4 ≤ Registro 5]"
+    },
+    {
+      "description": "Histéresis (salida “Regulación CO2” todo/nada) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la histéresis (50ppm a 400ppm) en binario de 16 bits. Valor por defecto: 200 [200ppm]."
+    },
+    {
+      "description": "Banda proporcional (salida “Regulación CO2” proporcional) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la banda proporcional (100ppm a 600ppm) en binario de 16 bits. Valor por defecto: 400 [400ppm]."
+    },
+    {
+      "description": "Tiempo de integración (salida “Regulación CO2” proporcional) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor del tiempo de integración (0s a 240s) en binario de 16 bits. =0s: Control proporcional. ≠0s: Control proporcional integral. Valor por defecto: 120 [120s: Control proporcional integral].CONTROL PROPORCIONAL-INTEGRAL (salida proporcional):Control proporcional: El equipo regula la salida proporcional 0…10V según la gráficas incluida en este documento. Control integral: En caso de que durante un intervalo de tiempo (tiempo de integración), el error (diferencia entre consigna y medida de calidad de aire) se mantenga constante o no se reduzca, el equipo automáticamente incrementa la salida 0…10V, con el objetivo que la medida de calidad de aire alcance la consigna establecida en el equipo.Nota: En caso de que cualquiera de los registros 7 ó 8 sea modificado, los cálculos del control PI se inicializan."
+    },
+    {
+      "description": "Mínima salida proporcional (salida “Regulación CO2” proporcional) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la mínima salida proporcional (0% a 100%) en binario de 16 bits. Valor por defecto: 0 [0%]. [Registro 9 ≤"
+    },
+    {
+      "description": "Máxima salida proporcional (salida “Regulación CO2” proporcional) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la máxima salida proporcional (0% a 100%) en binario de 16 bits. Valor por defecto: 100 [100%]. [Registro 9 ≤ Registro 10]"
+    },
+    {
+      "description": "Filtrado medida de CO2 [lectura/escritura].",
+      "bytes": {
+        "upperByte": "Byte alto: Tiempo entre adquisición de medidas. El valor que se envía es el valor del filtrado (1 a 100) en binario de 8 bits. Para obtener el tiempo entre medidas de CO2, dado en ms, multiplicar este parámetro por 50. Valor por defecto: 10 [500ms]. 1 50ms 0x0001 ... 10 500ms 0x000A ... 100 5000ms 0x0064 ",
+        "lowerByte": "Byte bajo: Límites medida consecutiva. El valor que se envía es el valor del límite (±1 a ±16) en binario de 8 bits. Valor por defecto: 1 [±1]"
+      }
+    },
+    {
+      "description": "Visualización en dígitos salida proporcional [lectura/escritura].",
+      "moreInfo": "0: Sin visualización. 1: Con visualización. Valor por defecto: 1 [Con visualización en dígitos salida proporcional]."
+    },
+    {
+      "description": "Habilitar/deshabilitar alarma en display [lectura/escritura].",
+      "moreInfo": "0: Alarma deshabilitada en display. 1: Alarma habilitada en display con visualización al. 2: Alarma habilitada en display con visualización al y con parpadeo de backlight. Valor por defecto: 0 [Alarma deshabilitada en display]. Notas: - Con regulador en off, no se señaliza alarma en el display. - La alarma por relé permanece habilitada independientemente del valor de este registro."
+    },
+    {
+      "description": "Temporización mínima de funcionamiento de renovación por hora (salida “Regulación CO2” todo/nada) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor de la temporización (0min a 60min) en binario de 16 bits. Valor por defecto: 10 [10min]. 0min: Salida off de manera permanente siempre y cuando CO2 sea correcto. >0min y <60min: Salida auto en función del CO2 y de la temporización. 60min: Salida on de manera permanente."
+    },
+    {
+      "description": "Offset medida CO2 (calibración medida de CO2) [lectura/escritura].",
+      "moreInfo": "El valor que se envía es el valor del offset (-250ppm a +250ppm) en binario de 16 bits. Valor por defecto: 0 [0ppm]. Los valores negativos se envían en complemento a 2 en binario de 16 bits. -250ppm 0xFF06 0ppm 0x0000 +250ppm 0x00FANota [EEPROM]: Los valores de los registros de lectura/escritura se guardan en EEPROM cada vez que se escribe en ellos.Registros sólo lectura "
+    },
+    {
+      "description": "CO2 [sólo lectura].",
+      "moreInfo": "El valor que se envía es el valor de la medida de CO2 (0ppm a 2000ppm) en binario de 16 bits. Salida analógica proporcional 0…10V: Salida “Medida CO2”. Rango de medida: 0ppm [0x0000] a 2000ppm [0x07D0]. Otro rango bajo pedido. RC151: Sensor de CO2 integrado en el regulador. RC151N: Sonda de CO2 conectada al regulador. Señal 0…10V. Otra señal bajo pedido"
+    },
+    {
+      "description": "Estado salidas por relé [sólo lectura].",
+      "bytes": {
+        "upperByte": "Byte alto: Salida regulación CO2 todo/nada. 0: Salida desactivada (contacto relé abierto). 1: Salida activada (contacto relé cerrado). El ventilador puede también activarse por tiempo (ver registro 14). Salida todo/nada por contacto de relé libre de potencial. Salida “Regulación CO2” todo/nada.",
+        "lowerByte": "Byte bajo: Alarma. 0: Salida desactivada (contacto relé abierto). 1: Salida activada (contacto relé cerrado). Salida todo/nada por contacto de relé libre de potencial."
+      }
+    },
+    {
+      "description": "Estado salida regulación CO2 proporcional [sólo lectura].",
+      "moreInfo": "El valor que se envía es el valor del porcentaje de salida (0% a 100%) en binario de 16 bits. Salida analógica proporcional 0…10V: Salida “Regulación CO2” proporcional. Regulación salida proporcional (renovación de aire necesaria"
+    },
+    {
+      "description": "Parada remota [sólo lectura].",
+      "moreInfo": "0: Parada remota desactivada (entrada digital abierta). 1: Parada remota activada (entrada digital cerrada)."
+    },
+    {
+      "description": "Versión firmware [sólo lectura].",
+      "moreInfo": "El valor que se envía es el valor de la versión del software del regulador (XX.X) multiplicada por 10 en binario de 16 bits"
+    }
+  ],
+  "test": { "0": 151, "20": 6 },
+  "util": {
+      "interact": [
+          {
+              "register": 2,
+              "components": [
+                  {
+                      "dependsOn": [],
+                      "type": {
+                          "selector": "toggle",
+                          "info": {
+                              "description": "Estado On/Off",
+                              "optionA": {
+                                  "value": 0,
+                                  "descriptor": "Off",
+                                  "dependsOn": []
+                              },
+                              "optionB": {
+                                  "value": 1,
+                                  "descriptor": "On",
+                                  "dependsOn": []
+                              }
+                          }
+                      }
+                  }
+              ]
+          }
+      ],
+      "visualize": [
+          {
+              "register": 5,
+              "components": [
+                  {
+                      "dependsOn": [],
+                      "type": {
+                          "selector": "number",
+                          "info": {
+                              "description": "Nivel C02",
+                              "metric": "ppb"
+                          }
+                      }
+                  }
+              ]
+          }
+      ]
+  }
+}
